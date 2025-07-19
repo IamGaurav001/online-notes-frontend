@@ -46,7 +46,7 @@ const UpdateNotes = () => {
     setSaving(true);
     setError("");
     try {
-      const res = await fetch(`http://localhost:5001/api/notes/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/notes/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
