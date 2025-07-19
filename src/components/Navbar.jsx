@@ -91,6 +91,12 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
+          <Link
+            to="/community"
+            className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
+          >
+            Community
+          </Link>
           {isLoggedIn ? (
             <>
               <span className="text-gray-800 dark:text-gray-200 font-medium px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
@@ -114,12 +120,6 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link
-                to="/community"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
-              >
-                Community
-              </Link>
               <button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
@@ -151,6 +151,13 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex flex-col gap-4 pt-4">
+            <Link
+              to="/community"
+              className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 text-center font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Community
+            </Link>
             {isLoggedIn ? (
               <>
                 <div className="flex items-center justify-between p-3 rounded-lg bg-gray-100 dark:bg-gray-800">
@@ -176,34 +183,25 @@ export default function Navbar() {
                 </div>
               </>
             ) : (
-              <>
-                <Link
-                  to="/community"
-                  className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 text-center font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={toggleDarkMode}
+                  className="flex-1 p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Community
-                </Link>
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={toggleDarkMode}
-                    className="flex-1 p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-                    <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      navigate("/login")
-                      setIsMobileMenuOpen(false)
-                    }}
-                    className="flex-1 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <User size={18} />
-                    <span>Login</span>
-                  </button>
-                </div>
-              </>
+                  {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                  <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
+                <button
+                  onClick={() => {
+                    navigate("/login")
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="flex-1 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <User size={18} />
+                  <span>Login</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
