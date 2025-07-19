@@ -8,6 +8,7 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -18,7 +19,7 @@ export default function Signup() {
     setLoading(true);
     setMessage(""); 
     try {
-      const res = await fetch("http://localhost:5001/api/auth/signup", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

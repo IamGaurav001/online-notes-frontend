@@ -5,13 +5,14 @@ const Community = () => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchNotes = async () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch("http://localhost:5001/api/notes/public", {
+        const res = await fetch(`${API_BASE_URL}/api/notes/public`, {
           headers: {
             "Content-Type": "application/json",
           },

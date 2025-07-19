@@ -12,12 +12,14 @@ const AllNotes = () => {
   const [sortBy, setSortBy] = useState("newest"); 
   const navigate = useNavigate();
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   useEffect(() => {
     const fetchNotes = async () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch("http://localhost:5001/api/notes", {
+        const res = await fetch(`${API_BASE_URL}/api/notes`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

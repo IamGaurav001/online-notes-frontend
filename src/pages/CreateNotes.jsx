@@ -10,13 +10,14 @@ const CreateNotes = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:5001/api/notes", {
+      const res = await fetch(`${API_BASE_URL}/api/notes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,13 +12,14 @@ const UpdateNotes = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchNote = async () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch(`http://localhost:5001/api/notes`, {
+        const res = await fetch(`${API_BASE_URL}/api/notes`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
