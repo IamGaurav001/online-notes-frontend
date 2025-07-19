@@ -51,7 +51,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/notes/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/notes/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
